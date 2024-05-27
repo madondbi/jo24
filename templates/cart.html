@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Long+Cang|Montserrat:300,400,700&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="/chemin/vers/votre/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/cart.styles.css">
+    <title>Paris 2024</title>
+</head>
+<body>
+    <div class="vp-container">
+        <header>
+            <h2 class="vp-logo">
+                <i class="fas fa-crown"></i>
+                <a href="#">Paris 2024</a>
+            </h2>
+            <ul>
+                <li><a href="{{ url_for('offers') }}">Continuez votre sélection</a></li>
+                <li>
+                    <a href="{{ url_for('checkout') }}">Procéder au paiement</a>
+                </li>
+            </ul>
+        </header>
+        <section class="vp">
+            <div class="vp-content">
+                <!-- ici on utilise le template filter défini plutot pour savoir si le list carts contien des données  -->
+                {% if carts|length > 0 %}
+                    <!--  Afficher le contenu du panier -->
+                    <section class="cart">
+                        <h2>Votre panier</h2>
+                        <ul>
+                            {% for offer in carts %}
+                                <li style="margin: 15px 0px;">
+                                    <h3>{{ offer.title }}</h3>
+                                    <p>{{ offer.description }}</p>
+                                    <button onclick="updateCart('remove', '{{ offer.id }}')">Supprimer</button>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% else %}
+                    <p>Votre panier est vide.</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+        <footer>
+            <p>Copyright © Jo de Paris 2024.</p>
+        </footer>
+    <script>
+        // fonction  de requete ajax pour mettre a jour le panier
+        function updateCart(action, id) {
+           fetch('/update_cart', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                    action,  // Ajoutez la clé action avec la valeur 'add'
+                    offer_id: id,  // Utilisez le type d'offre comme valeur de l'offre
+               }),
+           })
+           .then(response => {
+               if (!response.ok) {
+                   throw new Error('Network response was not ok');
+               }
+               return response.json();
+           })
+           .then(data => {
+               if (data.success){
+                alert("L'offre a été supprimer du panier !");
+                setTimeout(()=>{
+                    location.reload();
+                }, 1200)
+               }else{
+                alert(data.message);
+               }
+           })
+           .catch((error) => {
+               console.error('Error:', error);
+           });
+
+       }
+    </script>
+</body>
+</html>

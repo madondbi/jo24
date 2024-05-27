@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/register.styles.css">
+  <title>Inscription</title>
+</head>
+<body>
+  {% if erreur %}
+    <div class="alert alert-danger" role="alert">
+      {{ erreur }}
+    </div>
+  {% endif %}
+  <div class="container">
+    <h2>Inscription</h2>
+    <!-- Voici le code pour afficher les message flash envoyer de puis le back -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div>
+                {% for category, message in messages %}
+                    {% if message != 'Connexion admin réussie!' %}
+                        <div class="{{ category }}">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <form method="post">
+      <!-- mettre le token est important pour que les formulaire fonctionne -->
+      {{ form.csrf_token }}
+
+      <div class="form-group">
+        {{ form.lastname.label }}
+        <!-- ici on affiche le input de lastname -->
+        {{ form.lastname }}
+        <span style="color: red; font-size: 10px;">{{form.errors.lastname}}</span>
+      </div>
+      <div class="form-group">
+        {{ form.firstname.label }}
+        {{ form.firstname }}
+        <span style="color: red; font-size: 10px;">{{form.errors.firstname}}</span>
+      </div>
+      <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email }}
+        <span style="color: red; font-size: 10px;">{{form.errors.email}}</span>
+      </div>
+      <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password }}
+        <span style="color: red; font-size: 10px;">{{ ','.join(form.errors.password )}}</span>
+      </div>
+      <div class="form-group">
+        {{ form.confirm.label }}
+        {{ form.confirm }}
+        <span style="color: red; font-size: 10px;">{{form.errors.confirm}}</span>
+      </div>
+      <div class="form-group">
+        {{ form.submit }}
+      </div>
+    </form>
+    <div class="login-register">
+      <p><a href="{{ url_for('login') }}">Connexion</a></p>
+    </div>
+  </div>
+</body>
+</html>

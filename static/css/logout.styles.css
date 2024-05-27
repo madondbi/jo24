@@ -1,0 +1,18 @@
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url("/static/images/.jpg");
+    color: #333;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed;
+}

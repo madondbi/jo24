@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Long+Cang|Montserrat:300,400,700&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="/static/css/offers.styles.css">
+    <title>Paris 2024</title>
+</head>
+<body>
+    <div class="vp-container">
+        <header>
+            <h2 class="vp-logo">
+                <i class="fas fa-crown"></i>
+                <a href="#">Paris 2024</a>
+            </h2>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/offers">Offres</a></li>
+                <li>
+                    <a href="{{url_for('cart')}}" >Voir le panier</a>
+                </li>
+            </ul>
+        </header>
+        <section class="vp">
+            <div class="vp-content">
+                {% with messages = get_flashed_messages(with_categories=true) %} {% if
+                    messages %}
+                    <div>
+                      {% for category, message in messages %} {% if message != 'Connexion
+                      admin réussie!' %}
+                      <div class="{{ category }}">{{ message }}</div>
+                      {% endif %} {% endfor %}
+                    </div>
+                    {% endif %} {% endwith %}
+                <!-- énumeration des offres présent dans la base de données -->
+                {% if offers_data|length > 0 %}
+                {% for offer in offers_data %}
+                <div class="offer">
+                    <h3>{{offer.title}}</h3>
+                    <p>{{offer.description}}</p>
+                    <button onclick="addToCart('{{offer.id}}')">Ajouter au panier</button>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <h3>Auncune offre disponible actuellement</h3>
+                {% endif %}
+
+            </div>
+        </section>
+    </div>
+        <footer>
+            <p>Copyright © Jo de Paris 2024.</p>
+         </footer>
+    <script>
+        // ici on a la fonction qui envoi une requete ajax vers le back afin de mettre a jour le panier
+       function addToCart(id) {
+           fetch('/update_cart', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                   action: 'add',  // Ajoutez la clé action avec la valeur 'add'
+                   offer_id: id,  // Utilisez le type d'offre comme valeur de l'offre
+               }),
+           })
+           .then(response => {
+               if (!response.ok) {
+                   throw new Error('Network response was not ok');
+               }
+               return response.json();
+           })
+           .then(data => {
+               if (data.success){
+                alert("L'offre a été ajoutée au panier !");
+               }else{
+                alert(data.message);
+               }
+           })
+           .catch((error) => {
+               console.error('Error:', error);
+           });
+
+       }
+    </script>
+</body>
+</html>

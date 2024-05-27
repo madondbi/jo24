@@ -1,0 +1,157 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #eee;
+  color: #444;
+}
+
+h3{
+  margin-bottom: 6rem;
+}
+
+
+
+ul {
+  list-style: none;
+}
+
+
+/* offer */
+.offers-section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.offer {
+  width: calc(35% - 1px);
+  padding: 40px;
+  background-color: #666;
+  border-radius: 36px;
+  margin-bottom: 47px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+.offer p {
+    font-size: 16px;
+    color: #fff;
+}
+
+
+.offer button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.offer button:hover {
+    background-color: #796304;
+}
+
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* vp + header */
+.vp-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+header {
+  padding: 1rem 2rem;
+  background: #333;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  line-height: 1.8rem;
+}
+
+.vp-logo {
+  margin-bottom: 0;
+  font-family: "Long Cang", cursive;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.vp-logo a,
+a {
+    text-decoration: none;
+}
+
+
+.vp-logo a {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+header ul {
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+}
+
+header ul li {
+  padding: 1rem;
+}
+
+
+header ul li a:hover {
+  color: #f1c40f;
+}
+
+
+.vp {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("");
+}
+
+
+.vp-content {
+  max-width: 800px;
+  text-align: center;
+  color: #b30b0b;;
+  padding: 1rem;
+}
+
+.vp-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+footer {
+  background: #333;
+  padding: 2rem 1rem 2rem 1rem;
+  color: white;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+

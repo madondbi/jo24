@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Long+Cang|Montserrat:300,400,700&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="/chemin/vers/votre/favicon.ico" type="image/x-icon"  />
+    <link rel="stylesheet" href="/static/css/dashboard.styles.css" />
+    <title>Tableau de bord Admin!</title>
+
+  </head>
+  <body>
+    <div class="vp-container">
+      <header>
+        <h1 class="vp-logo">
+            <a href="#">Paris 2024</a>
+        </h1>
+
+        <ul>
+          <li><a href="{{ url_for('offers') }}">Visualiser les offres</a></li>
+          <li>
+            <a href="{{ url_for('admin_add_offer') }}">Ajouter une offre</a>
+          </li>
+          <li>
+            <a href="{{ url_for('scan_ebillet') }}">Scan ebillet</a>
+          </li>
+          <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
+        </ul>
+      </header>
+
+      <section class="vp">
+        <div class="vp-content">
+          <h2>
+            <p>Bienvenue sur le tableau de bord Admin!</p>
+          </h2>
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+            messages %}
+            <div>
+              {% for category, message in messages %} {% if message != 'Connexion
+              admin réussie!' %}
+              <div class="{{ category }}">{{ message }}</div>
+              {% endif %} {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+          <div class="mtb">
+            <h3>Liste des offres</h3>
+            <table style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Titre</th>
+                  <th>Descriptions</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if offers_list_count > 0 %}
+                {% for item in offers_list %}
+                <tr>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.description }}</td>
+                  <td><a style="color: #fff" href='/admin/edit_offer?id={{item.id}}'>Modifier</a> <a style="color: #fff" href='/admin/delete_offer?id={{item.id}}'>Supprimer</a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="3"> Aucune donnée disponible</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <div class="mtb">
+            <h3>Liste des utilisateurs</h3>
+            <table style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénoms</th>
+                  <th>Email</th>
+                  <!-- <th>Action</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                {% if user_list_count > 0 %}
+                {% for user in user_list %}
+                <tr>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.email }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="3"> Aucune donnée disponible</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <p>Copyright © Jo de Paris 2024.</p>
+    </footer>
+  </body>
+</html>

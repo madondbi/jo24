@@ -5,8 +5,8 @@
 
 body {
     font-family: "Montserrat", sans-serif;
-    background-color:#7b1a07;
-    color: #151108;
+    background-color:  #020b05;
+    color: #f0eee9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
     width: 400px;
     padding: 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: #2b1910;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

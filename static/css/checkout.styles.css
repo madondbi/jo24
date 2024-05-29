@@ -8,19 +8,19 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: #eee;
+  background-color: #f2f0f0;
   color: #333;
 }
 
 p {
-  margin-bottom: 0.8rem;
-  margin: 60px;
+  margin: 35px;
 }
 
 
 h1{
   margin-bottom: 1rem;
 }
+
 
 a {
   color: #333;
@@ -36,6 +36,13 @@ p {
 text-align:center
 }
 
+input{
+  padding: 11px;
+  margin: 12px;
+  background-color: #f7f7f7;
+  border-radius: 17px;
+}
+
 /* vp + header */
 header {
   padding: 1rem 2rem;
@@ -45,10 +52,8 @@ header {
   justify-content: space-between;
 }
 
-header ul {
-  display: flex;
-  flex-flow: row nowrap;
-  list-style: none;
+header ul :hover {
+  color: #f1c40f;
 }
 
 .vp-logo {

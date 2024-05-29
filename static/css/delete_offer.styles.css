@@ -8,7 +8,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: #eee;
+  background: #4b6f4f;
   color: #333;
 }
 
@@ -32,15 +32,24 @@ ul button{
   list-style: none;
 }
 
-
-p {
-  margin-bottom: 0.8rem;
+button {
+  margin-left: 520px;
+  padding: 21px;
+   border-radius: 20px;
+   position: fixed;
+  background-color: ;
 }
 
 p {
-  color: ;
+  margin-bottom: 9.8rem;
+
+}
+
+p {
+  color:#eee8e8;
   font-weight:400 ;
 }
+
 
 /* vp + header */
 
@@ -76,29 +85,30 @@ header {
 
 
 header ul li button {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 header ul li  a:hover {
-  color: #f1c40f;
+    color: #f1c40f;
 }
 
 header button:hover {
-  color: #f1c40f;
+    color: #f1c40f;
 }
 
 
 header a {
-  color: white;
+   color: white;
 }
 
 
 footer {
-  background: #333;
-  color: white;
-  text-align: center;
+   background: #333;
+   color: white;
+   text-align: center;
 }
 
+
 footer p {
-  margin-bottom: 0;
+   margin-bottom: 0;
 }

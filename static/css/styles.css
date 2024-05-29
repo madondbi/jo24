@@ -128,7 +128,8 @@ header a {
 }
 
 .offer-elem {
-  border: 1px solid #ddd;
+  border: 1.5px solid #ddd;
+  border-radius: 9px;
   background: white;
   margin: 1rem;
   flex: 1;

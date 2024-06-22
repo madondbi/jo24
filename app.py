@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from .forms.forms import LoginForm, RegisterForm, AdminForm, OfferForm, UserLoginForm
+from forms.forms import LoginForm, RegisterForm, AdminForm, OfferForm, UserLoginForm
 from flask_hashing import Hashing
 from functools import wraps
 import uuid, random, segno, os

@@ -8,7 +8,7 @@ import uuid, random, segno, os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://db_paris24:france24@localhost:5432/flask_db5'
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://ucmdr9svikk09u:p6bbe7b97c0c4d57bea5a20829f9199e99f1ae7823921e178f56f1ab8e2d9a55f@cav8p52l9arddb.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d7dlbls6hnsghl"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG'] = True
 app.config['TESTING'] = True

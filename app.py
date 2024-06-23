@@ -20,7 +20,7 @@ hashing = Hashing(app)
 db = SQLAlchemy(app)
 
 # Importation des modèles Flask et la base de données SQLAlchemy
-from .models.models import Admin, User, Ebillet, Offer
+from models.models import Admin, User, Ebillet, Offer
 
 with app.app_context():
     db.create_all()
